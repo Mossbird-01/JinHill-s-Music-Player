@@ -1,0 +1,271 @@
+body {
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    background-position: center; /* 居中背景图片 */
+    transition: background-image 1s ease; /* 添加背景图切换的过渡效果 */
+}
+.foot{
+    font-family: FangSong;
+    font-size: 1em;
+    font-weight: bold;
+    color: wheat;
+    text-shadow: 0px 0px 5px rgba(208, 195, 16, 0.601);
+}
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e91e63;
+}
+
+.progress-container {
+    width: 300px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden; /* 确保进度条显示好看 */
+}
+
+/* 添加圆角发光效果 */
+.progress-container {
+    position: relative;
+    overflow: visible;
+}
+
+.progress-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 70%
+    );
+    transition: opacity 0.3s;
+}
+
+.progress-container:hover::after {
+    opacity: 1;
+}
+
+.title {
+    font-size: 3em;
+    font-family: Courier;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    animation: titleGlow 2s infinite alternate;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+.title.playing {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.song-writer{
+    font-size: 2em;
+    font-family: Courier;
+    text-shadow: 2px 2px 10px rgba(228, 248, 2, 0.7);
+}
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 10px #07eae6, 0 0 20px #0af3c1;
+    }
+    to {
+        text-shadow: 0 0 20px #1e9fe9, 0 0 30px #0ce7d1;
+    }
+}
+
+
+body:active .title {
+    transform: scale(1.1);
+}
+.effect-circle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(152, 45, 111, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(10);
+        opacity: 0;
+    }
+}
+.progress-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+    transition: width 0.1s;
+    background: linear-gradient(90deg, 
+        rgba(0, 123, 255, 0.8) 0%, 
+        rgba(255, 65, 108, 0.8) 100%);
+    box-shadow: 0 0 10px rgba(255, 65, 108, 0.5);
+}
+
+@keyframes progress-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 65, 108, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 65, 108, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 65, 108, 0.5);
+    }
+}
+.progress-container:hover .progress-bar {
+    animation: progress-glow 1.5s infinite;
+}
+.lyrics-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 5px rgba(250, 250, 5, 0.859);
+}
+
+#currentLyric {
+    margin-bottom: 150px;
+    position: fixed;
+    min-height: 2em;
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+/* 新增样式 */
+.playlist-container {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.playlist {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.playlist-item {
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.playlist-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.playlist-item.playing {
+    background: #ff4081;
+    color: white;
+}
+
+.visualizer {
+    width: 300px;
+    height: 100px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.visualizer-bar {
+    box-shadow: 2px 2px 5px#a3cf029e;
+    position: absolute; /* 使柱子绝对定位 */
+    bottom: 0; /* 使柱子底部对齐容器底部 */
+    width: 5%; /* 每根柱子占总宽度的 5% */
+    transition: height 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 为每根柱子设置不同的定位 */
+.visualizer-bar:nth-child(1) { left: 0%; }
+.visualizer-bar:nth-child(2) { left: 7.5%; } 
+.visualizer-bar:nth-child(3) { left: 15%; }
+.visualizer-bar:nth-child(4) { left: 22.5%; }
+.visualizer-bar:nth-child(5) { left: 30%; }
+.visualizer-bar:nth-child(6) { left: 37.5%; }
+.visualizer-bar:nth-child(7) { left: 45%; }
+.visualizer-bar:nth-child(8) { left: 52.5%; }
+.visualizer-bar:nth-child(9) { left: 60%; }
+.visualizer-bar:nth-child(10) { left: 67.5%; }
+.visualizer-bar:nth-child(11) { left: 75%; }
+.visualizer-bar:nth-child(12) { left: 82.5%; }
+.visualizer-bar:nth-child(13) { left: 90%; }
+
+/* 修改原有按钮布局 */
+.controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
+    min-width: 80px;
+}
+
+.maker{
+    margin-top: 100px;
+    font-size: 3em;
+    font-family: Courier;
+    font-weight: bolder;
+    text-shadow:2px 2px 5px #ff4081;
+}

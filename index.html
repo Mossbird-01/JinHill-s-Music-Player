@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JinHill的播放器-深海回响</title>
+</head>
+<body>
+    <header> 
+        <h1 class="maker">-JinHill- </h>
+        <h2 class="title" id="songTitle">/h1>
+        <h3 class="song-writer" id="artist"></h2>
+    </header>
+    <main>
+        <div class="player-container">
+            <div class="visualizer" id="visualizer"></div>
+            <div class="controls">
+                <button id="prevButton">上一首</button>
+                <button id="playButton">播放</button>
+                <button id="nextButton">下一首</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="playlist-container">
+                <div class="playlist" id="playlist"></div>
+            </div>
+        </div>
+        <div id="effect-container"></div>
+        <div class="lyrics-container">
+            <div id="currentLyric"></div>
+        </div>
+    </main>
+    <footer class="foot"> @JinHill 制作 版权所有 </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const backgroundImages = [
+    "image/01.jpg",
+    "image/02.jpg",
+    "image/03.jpg",
+    "image/04.jpg",
+    "image/05.jpg",
+    "image/06.jpg",
+    "image/07.jpg",
+    "image/08.jpg",
+    "image/09.jpg",
+    "image/10.jpg",
+    "image/12.jpg",
+    "image/13.jpg",
+    "image/14.jpg",
+    "image/15.jpg",
+    "image/16.jpg",
+    "image/17.jpg",
+    "image/18.jpg",
+    "image/19.jpg",
+    "image/20.jpg",
+    "image/21.jpg",
+    "image/22.jpg",
+    "image/23.jpg",
+    "image/24.jpg",
+    "image/25.jpg",
+    "image/26.jpg",
+    "image/28.jpg",
+    "image/29.jpg",
+    "image/30.jpg",
+    "image/31.jpg",
+    "image/32.jpg",
+    "image/33.jpg",
+    "image/34.jpg",
+    "image/35.jpg",
+    "image/36.jpg",
+    "image/37.jpg",
+];
+
+let currentIndex = 0;
+
+function setBackground() {
+    document.body.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % backgroundImages.length; // 循环切换
+}
+
+// 页面加载时设置初始背景
+setBackground();
+
+// 每隔10秒自动更换背景图片
+setInterval(setBackground,5000); // 10000毫秒 = 10秒
+    </script>
+</body>
+</html>
