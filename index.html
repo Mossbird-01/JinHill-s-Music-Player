@@ -76,16 +76,27 @@
 
 let currentIndex = 0;
 
-function setBackground() {
-    document.body.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
-    currentIndex = (currentIndex + 1) % backgroundImages.length; // 循环切换
+// 预加载背景图片
+function preloadImages() {
+    backgroundImages.forEach((image) => {
+        const img = new Image();
+        img.src = image;
+    });
 }
-
+function setBackground() {
+    document.body.style.opacity = 0; // 设置为透明
+    setTimeout(() => {
+        document.body.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
+        document.body.style.opacity = 1; // 逐渐显示
+        currentIndex = (currentIndex + 1) % backgroundImages.length; // 循环切换
+    }, 1500); // 等待过渡时间后设置背景
+}
 // 页面加载时设置初始背景
+preloadImages();
 setBackground();
 
 // 每隔10秒自动更换背景图片
-setInterval(setBackground,10000); // 
+setInterval(setBackground,8000); 
     </script>
 </body>
 </html>
