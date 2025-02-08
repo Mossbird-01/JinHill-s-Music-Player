@@ -89,7 +89,7 @@ function setBackground() {
         document.body.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
         document.body.style.opacity = 1; // 逐渐显示
         currentIndex = (currentIndex + 1) % backgroundImages.length; // 循环切换
-}，2000);}
+});}
 // 页面加载时设置初始背景
 preloadImages();
 setBackground();
