@@ -10,8 +10,8 @@ body {
     text-align: center;
     position: relative;
     background-position: center; /* 居中背景图片 */
-    transition: background-image 1.5s ease,opacity 1.5s ease; /* 添加背景图切换的过渡效果 */
-    opacity:1;
+    transition: background-image 1.5s ease; /* 添加背景图切换的过渡效果 */
+    opacity:0;
 }
 .foot{
     font-family: FangSong;
