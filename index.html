@@ -36,7 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="script.js"></script>
     <script>
-        const backgroundImages = [
+      const backgroundImages = [
     "image/01.jpg",
     "image/02.jpg",
     "image/03.jpg",
@@ -83,19 +83,23 @@ function preloadImages() {
         img.src = image;
     });
 }
+
+// 设置背景
 function setBackground() {
     document.body.style.opacity = 0; // 设置为透明
     setTimeout(() => {
         document.body.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
         document.body.style.opacity = 1; // 逐渐显示
         currentIndex = (currentIndex + 1) % backgroundImages.length; // 循环切换
-},2000);}
-// 页面加载时设置初始背景
+    }, 1500); // 等待过渡时间后设置背景
+}
+
+// 页面加载时预加载图像并设置初始背景
 preloadImages();
 setBackground();
 
 // 每隔10秒自动更换背景图片
-setInterval(setBackground,15000); 
+setInterval(setBackground, 10000);
     </script>
 </body>
 </html>
