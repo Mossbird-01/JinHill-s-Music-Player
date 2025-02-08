@@ -89,14 +89,14 @@ function setBackground() {
         document.body.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
         document.body.style.opacity = 1; // 逐渐显示
         currentIndex = (currentIndex + 1) % backgroundImages.length; // 循环切换
-    }, 2000); // 等待过渡时间后设置背景
+    }, 1000); // 等待过渡时间后设置背景
 }
 // 页面加载时设置初始背景
 preloadImages();
 setBackground();
 
 // 每隔10秒自动更换背景图片
-setInterval(setBackground,10000); 
+setInterval(setBackground,15000); 
     </script>
 </body>
 </html>
